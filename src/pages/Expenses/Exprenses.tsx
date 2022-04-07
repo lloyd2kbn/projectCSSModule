@@ -8,6 +8,8 @@ import optionsIcon from '../../assets/png/menuIcon.png';
 import cartIcon from '../../assets/svg/cartIcon.svg';
 import transportIcon from '../../assets/svg/transportIcon.svg';
 import houseIcon from '../../assets/svg/houseIcon.svg';
+import boxes from '../../assets/png/boxes.png';
+import plant from '../../assets/png/plant.png';
 import { useState } from 'react';
 function Exprenses() {
   const [activeIndex,setActiveIndex]=useState(0);
@@ -239,8 +241,8 @@ function Exprenses() {
                     </div>
                     <p className={styles['dateRange']}>01 - 25 March</p>
                     {/* chart */}
-                    <ResponsiveContainer width="100%" minHeight="9vh">
-                        <BarChart width={150} height={40} data={data}>
+                    <ResponsiveContainer width="100%" height="9%">
+                        <BarChart data={data}>
                              <Bar dataKey="uv" fill="rgba(21,122,255,.2)" onMouseOver={onMouseOver}>
                                     {data.map((entry,index)=>{
                                           return  <Cell key={index} cursor="pointer" fill={index===activeIndex?"rgb(21,122,255)":"rgba(21,122,255,.2)"}/>
@@ -254,7 +256,7 @@ function Exprenses() {
                    <div className={styles['expensesOverviewHeader']}>
                                 <p className={styles['expensesOverviewTitle']}>Today</p>
                                 <button>
-                                  <img src={optionsIcon} alt="options" />
+                                  <img className={styles['expenseOption']} src={optionsIcon} alt="options" />
                                 </button>
                    </div>
 
@@ -284,7 +286,7 @@ function Exprenses() {
                    <div className={styles['expensesOverviewHeader']}>
                                 <p className={styles['expensesOverviewTitle']}>Monday,March 2020</p>
                                 <button>
-                                  <img src={optionsIcon} alt="options" />
+                                    <img className={styles['expenseOption']} src={optionsIcon} alt="options" />
                                 </button>
                    </div>
                    <ul>
@@ -310,8 +312,39 @@ function Exprenses() {
                    </ul>
                 </section>
               {/* paragraph Right */}
+              <section className={styles['moneyOverview']}>
+                  <p className={styles['moneyOverviewTitle']}>Where your money go?</p>
+                  <ul>
+                    {
+                      spendCategories.map((category,index)=>{      
+                  return  <li key={category.id}>
+                            <div className={styles['spendCategory']}>
+                              <p className={styles['spendCategoryName']}>{category.category}</p>
+                              <p className={styles['spendCategoryPrice']}>{category.price.toFixed(2)}</p>
+                            </div>
+                            <div className={styles['spendCategoryBar']} >
+                            <div className={styles['spendCategoryColoredBar']} style={{width:`${category.price/spendCategories.reduce((initial,item)=>{
+                                    return initial+item.price;
+                            },0)*100}%`}}></div>
+                            </div>
+                          </li>
+                      })
+                    }
+                  </ul>
+                      {/* right bottom saveMpney*/}
+                   <div className={styles['saveMoneyDiv']}>
+                           <img src={boxes} className={styles['boxes']} />
+                           <img src={plant} className={styles['plant']} />
+                           <p className={styles['savemoney-title']}>Save more money</p>
+                           <p className={styles['savemoney-desc']}>Learn how to create a Dashboard App with React based on a Figma Design. We'll be using TypeScript,
+                              CSS Modules, Recharts and GitHub Pages to deploy the app.</p>
+                  
+                                  <button className={styles['btn-savemoney']}>View Tips</button>
+                         
+                  </div>
+              </section>
           </div>
-               
+        
     </main>
   )
 }

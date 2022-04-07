@@ -9,17 +9,23 @@
         align-items: center;
         justify-content: center;
         
-        // left
         .expensesCard{
             background-color: white;
             width: 95%;
             height: 95%;
             border-radius: 30px;
-            overflow-y: scroll;
+          
+            display: flex;
+            
+            // left
             .expensesOverview{
                 width: 65%;
                 padding: 5rem;
-               
+                overflow-y: scroll;
+                &::-webkit-scrollbar{
+                    display: none;
+                }
+              
                 .expensesHeader{
                     display: flex;
                     justify-content: space-between;
@@ -55,6 +61,9 @@
                     .expensesOverviewTitle{
                         font-size: 18px;
                         font-weight: 500;
+                    }
+                    .expenseOption{
+                            cursor: pointer;
                     }
                    
                 }
@@ -92,6 +101,87 @@
                             font-weight: 600;
                         }
                     }
+                }
+            }
+            // right
+            .moneyOverview{
+                 width: 35%;
+                background-color: #f9fafc;
+                border-radius: 0 50px 50px 0;
+                padding: 5rem 2rem;
+                .moneyOverviewTitle{
+                    font-size: 20px;
+                    font-weight: 600;
+                    margin-bottom: 3rem;
+
+                }
+                li{
+                    .spendCategory{
+                        display: flex;
+                        justify-content: space-between;
+                        .spendCategoryName{
+
+                        }
+                        .spendCategoryPrice{
+
+                        }
+                    }
+                    .spendCategoryBar{
+                        height: 5px;
+                        background-color: #eceff5;
+                        border-radius: 5px;
+                        margin-bottom: 2rem;
+                        margin-top: 1rem;
+                        .spendCategoryColoredBar{
+                            background-color: #31ba96;
+                        
+                            height: 5px;
+                            border-radius: 5px;
+                        }
+                      
+                    }
+                }
+                .saveMoneyDiv{       
+                    width:70%;
+                    margin: 40px auto;
+                    background-color: #edf0f6;
+                    padding: 1rem;
+                    border-radius: 15px;
+                    position: relative;
+                    .boxes{
+                        position: absolute;
+                        top: -31px;
+                        left: 187px;
+                    }
+                    .plant{
+                        position: absolute;
+                        top: -40px;
+                        right: 187px;
+                    }
+                    .savemoney-title{
+                        margin-top: 4rem;
+                        
+                    }
+                    .savemoney-desc{
+                        font-size: 12px;
+                    }
+                   
+                    .btn-savemoney{
+                        color: white;
+                        background-color: black;
+                        outline: none;
+                        border-radius: 5px;
+                        height: 30px;
+                        margin: 5px auto;
+                        cursor: pointer;
+                        font-size: 12px;
+                        padding: 6px 10px;                     
+                        width: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                  
                 }
             }
         }
